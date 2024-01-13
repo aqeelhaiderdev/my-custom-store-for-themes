@@ -1,0 +1,60 @@
+<h1>{{ section.settings.text }}</h1>
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'shop' %}
+      <div>{{ block.settings.text }}</div>
+    {% when 'social' %}
+    <a href="{{ block.settings.button_link_1 }}">Twitter</a>
+    <a href="{{ block.settings.button_link_2 }}">Facebook</a>
+  {% endcase %}
+{% endfor %}
+
+{% schema %}
+  {
+    "name": "Custom section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "text",
+        "label": "Title",
+        "default": "Aqeel Haider"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Shop Name",
+        "type": "shop",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Shop Name",
+            "default": "My cutom shop"
+          }
+        ]
+      },
+      {
+        "name": "social",
+        "type": "social",
+        "settings": [
+          {
+            "type": "url",
+            "id": "button_link_1",
+            "label": "Twitter"
+          },
+          {
+            "type": "url",
+            "id": "button_link_2",
+            "label": "Facebook"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom section"
+      }
+    ]
+  }
+{% endschema %}
